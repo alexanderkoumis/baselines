@@ -10,9 +10,12 @@ import subprocess
 # ================================================================
 
 def fmt_row(width, row, header=False):
-    out = " | ".join(fmt_item(x, width) for x in row)
-    if header: out = out + "\n" + "-"*len(out)
-    return out
+    try:
+        out = " | ".join(fmt_item(x, width) for x in row)
+        if header: out = out + "\n" + "-"*len(out)
+        return out
+    except:
+        return ''
 
 def fmt_item(x, l):
     if isinstance(x, np.ndarray):
